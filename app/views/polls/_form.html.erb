@@ -1,27 +1,26 @@
-<%= form_with(model: poll, local: true) do |form| %>
-  <% if poll.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
-
-      <ul>
-      <% poll.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<%= form_with(model: poll, remote: true, format: :json, id: 'add_poll') do |form| %>
+      <% if poll.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+          <ul>
+          <% poll.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :poll_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :burnout %>
-    <%= form.check_box :burnout, id: :poll_burnout %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :poll_name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :burnout, "Are you burnt out? " %><br />
+        <%= form.label :burnout, "Yes", :value => "true" %>
+        <%= form.radio_button :burnout, 'yes', :checked => true %>
+        <%= form.label :burnout, "No", :value => "false" %>
+        <%= form.radio_button :burnout, 'no'%>
+      </div>
+      <div class="actions">
+        <%= form.submit 'submit', class: "btn btn-success"%>
+      </div>
+    <% end %>
