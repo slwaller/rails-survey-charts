@@ -16,9 +16,9 @@
       <div class="field">
         <%= form.label :burnout, "Are you burnt out? " %><br />
         <%= form.label :burnout, "Yes", :value => "true" %>
-        <%= form.radio_button :burnout, 'yes', :checked => true %>
+        <%= form.radio_button :burnout, true %>
         <%= form.label :burnout, "No", :value => "false" %>
-        <%= form.radio_button :burnout, 'no'%>
+        <%= form.radio_button :burnout, false %>
       </div>
       <div class="actions">
         <%= form.submit 'submit', class: "btn btn-success"%>

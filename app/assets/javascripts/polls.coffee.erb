@@ -12,7 +12,7 @@ submitPoll = (data) ->
 $ ->
 updateChart = (data) ->
   chart = Chartkick.charts['polls'].getChartObject()
-  if data.burnout == 'yes'
+  if data.burnout == true
     chart.data.datasets[0].data[0]++
     chart.update()
   else

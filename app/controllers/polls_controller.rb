@@ -27,6 +27,9 @@ class PollsController < ApplicationController
   def create
     @poll = Poll.new(poll_params)
 
+    puts poll_params
+    puts @poll.inspect
+
     respond_to do |format|
       if @poll.save
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
